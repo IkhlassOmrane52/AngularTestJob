@@ -1,0 +1,96 @@
+<main-nav>
+<div class="search-div">
+ 
+  <mat-form-field class="search-form-field" floatLabel="never" >
+    <input matInput  placeholder="Find GPS History By Name"   #nom_user (keyup)="findGpsByname(nom_user)">
+
+    
+  </mat-form-field>
+</div>
+<div>
+  <div><mat-spinner *ngIf="display" ></mat-spinner>
+
+   <mat-table [dataSource]="dataSource"   matSort >
+    
+    <!--<ng-container matColumnDef="id_user">
+      <mat-header-cell *matHeaderCellDef mat-sort-header  disableClear="true">Id</mat-header-cell>
+     <mat-cell  *matCellDef="let Gps">{{Gps.id_user }}</mat-cell>
+     </ng-container>-->
+
+    <ng-container matColumnDef="date_install">
+      <mat-header-cell *matHeaderCellDef mat-sort-header  disableClear="true">Date </mat-header-cell>
+     <mat-cell  *matCellDef="let Gps">{{Gps.date_install |date: 'dd/MM/yyyy HH:mm:ss'}}</mat-cell>
+     </ng-container>
+
+     <ng-container matColumnDef="nom_user">
+       <mat-header-cell *matHeaderCellDef mat-sort-header>Utilisateur</mat-header-cell>
+      <mat-cell *matCellDef="let Gps">{{Gps.nom_user}}</mat-cell>
+      </ng-container>
+     
+     <ng-container matColumnDef="ip_mac">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Adresse Mac</mat-header-cell>
+       <mat-cell  *matCellDef="let Gps">{{Gps.ip_mac}}</mat-cell>
+       </ng-container>
+       
+       <ng-container matColumnDef="nom_machine">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nom Machine</mat-header-cell>
+       <mat-cell *matCellDef="let Gps">{{Gps.nom_machine}}</mat-cell>
+       </ng-container>
+       <ng-container matColumnDef="latitude_gps">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>LatitudeGps</mat-header-cell>
+       <mat-cell *matCellDef="let Gps">{{Gps.latitude_gps}}</mat-cell>
+       </ng-container>
+       <ng-container matColumnDef="longitude_gps">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>LongitudeGps</mat-header-cell>
+       <mat-cell *matCellDef="let Gps">{{Gps.longitude_gps}}</mat-cell>
+       </ng-container>
+       <ng-container matColumnDef="altitude_gps">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>AltitudeGps</mat-header-cell>
+       <mat-cell *matCellDef="let Gps">{{Gps.altitude_gps}}</mat-cell>
+       </ng-container>
+       <ng-container matColumnDef="accuracy_gps">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>AccuracyGps</mat-header-cell>
+       <mat-cell *matCellDef="let Gps">{{Gps.accuracy_gps}}</mat-cell>
+       </ng-container>
+       <ng-container matColumnDef="actionsColumn">
+        <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let Gps">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+       
+
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="showPosition(Gps.latitude_gps,Gps.longitude_gps,Gps.nom_user)">
+              <mat-icon> location_on</mat-icon>
+              <span>Position</span>
+            </button>
+            <button mat-menu-item (click)="showMap(Gps.nom_user,Gps.id_user)">
+              <mat-icon>gps_fixed </mat-icon>
+              <span>AllPositions</span>
+            </button>
+            <button mat-menu-item (click)="showChart(Gps.nom_user,Gps.id_user)">
+              <mat-icon>directions_car</mat-icon>
+              <span>StatUser</span>
+            </button>
+            <button mat-menu-item (click)="showDistrubition(arrayid,arraynomuser)">
+              <mat-icon>insert_chart</mat-icon>
+              <span>Chart</span>
+            </button>
+          </mat-menu>
+        </mat-cell>
+
+      </ng-container>
+       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+       <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+      </mat-table>
+      </div>
+      <mat-paginator   [length] = "100"
+      [pageSize] = "10"
+      [pageSizeOptions] = "[5, 10, 25, 100]"></mat-paginator>
+</div>
+
+
+</main-nav>

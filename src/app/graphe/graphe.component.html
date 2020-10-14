@@ -1,0 +1,37 @@
+<mat-dialog-header >
+
+  <mat-card-header>
+   <mat-toolbar class="toolbar" color="primary">
+     <mat-card-title> courbe graghique en fonction distance pour tous les utilisateurs par date</mat-card-title>
+     <span class="toolbar-spacer"></span>
+     <mat-icon (click)="onClose()">cancel</mat-icon>
+ 
+        <!--<button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>-->
+     </mat-toolbar></mat-card-header>
+   </mat-dialog-header >
+   <mat-dialog-content>
+   
+        
+    <label id="example-radio-group-label">Choisis une  date </label> 
+   <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="DateChoisie">
+      
+      <mat-radio-button class="example-radio-button" 
+       *ngFor="let option of options" [value]="option" (click)="showDetails(option)"  (click)="onClose()"> 
+        {{option}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div >La date choisis : {{DateChoisie}}</div></mat-dialog-content>
+ <!--<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>-->

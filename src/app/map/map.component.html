@@ -1,0 +1,63 @@
+<mat-dialog-header >
+
+  <mat-card-header>
+<mat-toolbar class="toolbar" color="primary">
+<mat-card-title>Positionnement GPS de l'employé {{data.nom_user}} par date </mat-card-title>
+<span class="toolbar-spacer"></span>
+<mat-icon (click)="onClose()">cancel</mat-icon>
+
+   <!--<button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>-->
+</mat-toolbar></mat-card-header>
+</mat-dialog-header >
+<mat-dialog-content >
+
+<mat-card-content>
+
+  
+  <!--<mat-form-field>
+    <input matInput  [matDatepicker]="picker1" placeholder="Debut" [formControl]="Debut">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker2" placeholder="Fin"
+           [formControl]="Fin"  (dateChange)="changePeriodDate()" (click)="onClose()">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2><
+      /mat-datepicker>
+  </mat-form-field>-->
+
+  <div>
+    
+  <label id="example-radio-group-label">Choisir une periode </label> </div>
+ <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="DateChoisie">
+    
+    <mat-radio-button class="example-radio-button" 
+     *ngFor="let option of options" [value]="option" (click)="showDetails(option)"  (click)="onClose()"> 
+      {{option}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div >La date choisis : {{DateChoisie}}</div>
+  <mat-form-field>
+    <input matInput [ngxMatDatetimePicker]="picker1" placeholder="Choose a date1" [formControl]="Debut"
+       [min]="minDate" [max]="maxDate" [disabled]="disabled">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker1 [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+       [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond">
+    </ngx-mat-datetime-picker>
+ </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [ngxMatDatetimePicker]="picker2" placeholder="Choose a date2" [formControl]="Fin"
+       [min]="minDate" [max]="maxDate" [disabled]="disabled"   (dateChange)="changePeriodDate()" (click)="onClose()">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker2 [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+       [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"    >
+    </ngx-mat-datetime-picker>
+ </mat-form-field>
+</mat-card-content>  </mat-dialog-content>
+

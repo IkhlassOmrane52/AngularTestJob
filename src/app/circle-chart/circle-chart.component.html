@@ -1,0 +1,41 @@
+<mat-dialog-header >
+
+  <mat-card-header>
+   <mat-toolbar class="toolbar" color="primary">
+     <mat-card-title>chart distance  {{data.title}} </mat-card-title>
+     <span class="toolbar-spacer"></span>
+     <mat-icon (click)="onClose()">cancel</mat-icon>
+ 
+        <!--<button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>-->
+     </mat-toolbar></mat-card-header>
+   </mat-dialog-header >
+   <div class="virtual-scroll-container">
+    <cdk-virtual-scroll-viewport itemSize="50" minBufferPx="50" maxBufferPx="101" class="viewport"> 
+   <mat-spinner mode="determinate" value="40" *ngIf="showSpinner"></mat-spinner>
+   <div class="btn btn-success" (click)="getDataChart()">Get Data Chart </div>
+
+<div class="chart-wrapper">
+  <canvas *ngIf="pieChartData.length ==pieChartLabels.length " baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="barChartType"
+    [options]="pieChartOptions"
+    [legend]="pieChartLegend"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+</div>
+<h4 style="text-align:center">Bar  Chart For Distance user
+</h4>
+<div class="btn btn-success" (click)="sum(pieChartData)">Afficher Distance total d' {{data.title}} </div>
+<div><span>Distance Total parcourue : {{this.int}} km</span></div>
+  
+<div style="display: block">
+  <canvas baseChart *ngIf="pieChartData.length ==pieChartLabels.length "
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"></canvas>
+</div>
+<h4 style="text-align:center">Pie  Chart For Distance user
+</h4>
+</cdk-virtual-scroll-viewport>
+</div>

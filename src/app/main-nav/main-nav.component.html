@@ -1,0 +1,29 @@
+
+   
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" [ngClass]="{hidden: !(isHandset | async)!}" fixedInViewport="false" [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="(isHandset | async)!? 'over' : 'side'" [opened]="!(isHandset | async)!">
+    <mat-toolbar  class="toolbar" color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+
+      <!--<a mat-list-item href="/login">Link 1</a>
+      <a mat-list-item href="/register">Link 2</a>
+      <a mat-list-item href="/gps-table">Link 3</a>-->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar  class="toolbar" color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" >
+        <mat-icon aria-label="Side nav toggle icon">menu
+        </mat-icon>
+      </button>
+      <span>Geolocalisation</span>
+      <span class="spacer"></span>
+      <a href="/login">Login</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

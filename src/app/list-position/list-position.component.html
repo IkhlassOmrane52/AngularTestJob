@@ -1,0 +1,34 @@
+
+      <mat-card-header>
+
+  <mat-toolbar class="toolbar" color="primary">
+    <mat-card-title>les routes et les  positions visités par l'utilisateur {{ data.nom_user }}:du {{data.dateDebut}} a {{data.DateFin}} </mat-card-title>
+    <span class="toolbar-spacer"></span>
+    <mat-icon (click)="onClose()">cancel</mat-icon>
+
+    </mat-toolbar>
+  </mat-card-header>
+
+
+
+    <mat-dialog-content >
+
+    <mat-card-content>
+      <!--<agm-map  [latitude]="Marques[0].latitude_gps"  [longitude]="Marques[0].longitude_gps"  [zoom]="12">
+        <agm-marker *ngFor="let m of Marques"[latitude]="m.latitude_gps" [longitude]="m.longitude_gps" [markerDraggable]="true"(dragEnd)="markerDragEnd($event)" [zoom]="15">
+  
+         <agm-info-window>
+           <strong>Voila votre Position</strong>
+          </agm-info-window>
+      
+         </agm-marker>
+      
+       </agm-map>
+      <div *ngFor="let m of Marques">
+
+        <div><a>Latitude: {{m.latitude_gps}}</a></div>
+        <div><a>Longitude: {{m.longitude_gps}}</a></div>
+      </div>-->
+
+      <div id="map" ></div>
+  </mat-card-content>  </mat-dialog-content>

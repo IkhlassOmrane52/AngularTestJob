@@ -1,0 +1,55 @@
+<mat-dialog-header >
+
+   <mat-card-header>
+    <mat-toolbar class="toolbar" color="primary">
+      <mat-card-title>Tous les  positions visités pour l'utilisteur  {{data.nom_user}} {{data.title}}</mat-card-title>
+      <span class="toolbar-spacer"></span>
+      <mat-icon (click)="onClose()">cancel</mat-icon>
+  
+         <!--<button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>-->
+      </mat-toolbar></mat-card-header>
+    </mat-dialog-header >
+        <mat-dialog-content >
+          <!--<mat-form-field>
+            <mat-label>Choisir nombre de position</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option>None</mat-option>
+              <mat-option value="1"> 1</mat-option>
+              <mat-option value="2"> 2</mat-option>
+              <mat-option value="3"> 3</mat-option>
+            </mat-select>
+          </mat-form-field>-->
+          <h2> Nombre de positions total:{{len}}</h2>
+         <!--<mat-form-field>
+            <mat-label>choisir nombre de position  </mat-label>
+            <mat-select (ngModelChange)="getSelectedValue($event)" [ngModel]="selectedValue" name="option" > 
+              <mat-option *ngFor="let option of options" [value]="option.value" >
+                {{option.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>-->
+      <mat-card-content>
+        <div class="virtual-scroll-container">
+          <cdk-virtual-scroll-viewport itemSize="50" minBufferPx="50" maxBufferPx="101" class="viewport"> 
+        <agm-map  [latitude]="obj[0].latitude_gps"  [longitude]="obj[0].longitude_gps"  [zoom]="12">
+
+         <!--<agm-marker *ngFor="let m of obj.slice(0,selectedValue)"
+          [latitude]="m.latitude_gps" 
+          [longitude]="m.longitude_gps" >-->
+          <agm-marker *ngFor="let m of obj"
+          [latitude]="m.latitude_gps" 
+          [longitude]="m.longitude_gps" >
+    
+    
+          <agm-info-window>
+            <strong>Voila votre Position</strong>
+          </agm-info-window>
+          
+        </agm-marker>
+          
+
+        </agm-map>
+      </cdk-virtual-scroll-viewport>
+    </div>
+    </mat-card-content>
+  </mat-dialog-content >

@@ -1,0 +1,41 @@
+<!--<mat-toolbar><button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>-->
+ <mat-dialog-header>
+
+  <mat-card-header>
+    <mat-toolbar class="toolbar" color="primary">
+      <mat-card-title>Position GPS pour {{data.nom_user}}</mat-card-title>
+      <span class="toolbar-spacer"></span>
+      <mat-icon (click)="onClose()">cancel</mat-icon>
+  
+         <!--<button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>-->
+      </mat-toolbar></mat-card-header>
+    </mat-dialog-header >
+        <mat-dialog-content >
+
+      <mat-card-content>
+        <agm-map 
+        [latitude]="data.latitude_gps" 
+        [longitude]="data.longitude_gps" 
+        [zoom]="zoom" center='map.center' >
+          <agm-marker 
+          [latitude]="data.latitude_gps" 
+          [longitude]="data.longitude_gps" >
+    
+          <agm-info-window>
+            <strong>Voila votre Position</strong>
+          </agm-info-window>
+          
+        </agm-marker>
+          
+
+        </agm-map>
+       <!-- <div class="map">
+          <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-direction *ngFor="let dir of dirArr" [origin]="dir.origin" [destination]="dir.destination" [visible]="dir.visible"></agm-direction>
+          </agm-map>
+          <button type="button" (click)="ShowDirection()">Show</button>
+          <button type="button" (click)="HideDirection()">Hide</button>
+        </div>-->
+      
+    </mat-card-content>       
+   </mat-dialog-content>
